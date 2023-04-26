@@ -1,0 +1,21 @@
+igm package
+===========
+
+Submodules
+----------
+
+igm.igm module
+--------------
+
+.. automodule:: igm.igm
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: igm
+   :members:
+   :undoc-members:
+   :show-inheritance:

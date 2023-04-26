@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to The Instructed Glacier Model (IGM)’s documentation! &mdash; The Instructed Glacier Model (IGM) v1.0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            The Instructed Glacier Model (IGM)
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">The Instructed Glacier Model (IGM)</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to The Instructed Glacier Model (IGM)’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-the-instructed-glacier-model-igm-s-documentation">
+<h1>Welcome to The Instructed Glacier Model (IGM)’s documentation!<a class="headerlink" href="#welcome-to-the-instructed-glacier-model-igm-s-documentation" title="Permalink to this heading"></a></h1>
+<section id="h1-align-center-id-title-inverse-modelling-data-assimilation-with-igm-h1">
+<h2><span class="raw-html-md"><h1 align="center" id="title">Inverse modelling (data assimilation) with IGM </h1></span><a class="headerlink" href="#h1-align-center-id-title-inverse-modelling-data-assimilation-with-igm-h1" title="Permalink to this heading"></a></h2>
+<p>A data assimilation module of IGM permits to seek optimal ice thickness, top ice surface, and ice flow parametrization (red variables in the following figure), that best explains observational data such as surface ice speeds, ice thickness profiles, top ice surface (blue variables in the following figure) while being consistent with the ice flow emulator used in forwrd modelling. This page explains how to use the data assimilation module as a preliminary step in IGM of a forward/prognostic model run. I recomend to read the paper reference given below before to proceed further. Look at the aletsch-invert example to try the inverse modelling on an example.</p>
+<a class="reference external image-reference" href="https://github.com/jouvetg/igm/blob/main/fig/scheme_simple_invert.png"><img alt="" src="https://github.com/jouvetg/igm/blob/main/fig/scheme_simple_invert.png" /></a>
+</section>
+</section>
+<section id="getting-the-data">
+<h1>Getting the data<a class="headerlink" href="#getting-the-data" title="Permalink to this heading"></a></h1>
+<p>The first thing you need to do is to get as much data as possible, this includes:</p>
+<ul class="simple">
+<li><p>Observed surface ice velocities ${bf u}^{s,obs}$, e.g. from Millan and al. (2022).</p></li>
+<li><p>Surface top elevation $s^{obs}$, e.g. SRTM, ESA GLO-30, …</p></li>
+<li><p>Ice thickness profiles $h_p^{obs}$, e.g. GlaThiDa</p></li>
+<li><p>Glacier outlines, and resulting mask, e.g. from the Randolph Glacier Inventory.</p></li>
+</ul>
+<p>Of course, you may not have all these data, which is fine. You work with a reduced amount of data, however, you will have make assumptions to reduce the number of variables to optimize (controls) to keep the optimization problem well-posed (i.e., with a unique solution).</p>
+<p>All the data need to be assemblied in 2D raster grid in an netcdf file (called by default observation.nc) using convention variable names but ending with ‘obs’. E.g. observation.nc contains fields ‘usurfobs’ (observed top surface elevation), ‘thkobs’ (observed thickness profiles, use nan or novalue where no data is available), ‘icemaskobs’ (this mask from RGI outline serve to enforce zero ice thickness outside the mask), ‘uvelsurfobs’ and ‘vvelsurfobs’ (x- and y- components of the horizontal surface ice velocity, use nan or novalue where no data is available), ‘thkinit’ (this may be a formerly-inferred ice thickness field to initalize the inverse model, otherwise it would start from thk=0).</p>
+<p><strong>I have prepared the observation file for nearly all glaciers of the world. If you have a region or glacier of interest, feel free to drop me any email at guillaume dot jouvet at unil dot ch with the RGI number of lon/lat coordinates of the region of interest so that I can send you the corresponding observation file.</strong></p>
+</section>
+<section id="asumption-on-the-ice-flow-control">
+<h1>Asumption on the ice flow control<a class="headerlink" href="#asumption-on-the-ice-flow-control" title="Permalink to this heading"></a></h1>
+<p>Optimizing for both Arrhenius factor (A) and sliding coefficient (c) would lead to multiple solutions as several combinations of the two may explain the observed ice flow similarly. To deal with this issue, we introduce a single control of the ice flow strenght (named as ‘strflowctrl’ in IGM) $tilde{A}$ = A + lambda c, where A is the Arrhenius factor that controls the ice shearing from cold-ice case (low A) to temperate ice case (A=78), c is a sliding coefficient that controls the strength of basal motion from no sliding (c=0) to high sliding (high c) and lambda=1 is a given parameter.</p>
+<a class="reference external image-reference" href="https://github.com/jouvetg/igm/blob/main/fig/strflowctrl.png"><img alt="" src="https://github.com/jouvetg/igm/blob/main/fig/strflowctrl.png" /></a>
+</section>
+<section id="general-optimization-setting">
+<h1>General optimization setting<a class="headerlink" href="#general-optimization-setting" title="Permalink to this heading"></a></h1>
+<p>The optimization problem consists of finding spatially varying fields ($h$, $tilde{A}$, $s$) that minimize the cost function
+$$ mathcal{J}(h,tilde{A},s) = mathcal{C}^u + mathcal{C}^h + mathcal{C}^s + mathcal{C}^{d} + mathcal{R}^h +  mathcal{R}^{tilde{A}} +  mathcal{P}^h, $$</p>
+<p>where $mathcal{C}^u$ is the misfit between modeled and observed surface ice velocities ($mathcal{F}$ is the output of the ice flow emulator/neural network):
+$$ mathcal{C}^u = int_{Omega} frac{1}{2 sigma_u^2} left| {bf u}^{s,obs} - mathcal{F}( h, frac{partial s}{partial x}, frac{partial s}{partial y}, tilde{A})  right|^2,  $$</p>
+<p>where $mathcal{C}^h$ is the misfit between modeled and observed ice thickness profiles:
+$$ mathcal{C}^h = sum_{p=1,…,P} sum_{i=1,…,M_p} frac{1}{2 sigma_h^2}  | h_p^{obs}  (x^p_i, y^p_i) - h (x^p_i, y^p_i) <a href="#id1"><span class="problematic" id="id2">|</span></a>^2, $$</p>
+<p>where $mathcal{C}^s$ is the misfit between the modeled and observed top ice surface:
+$$ mathcal{C}^s = int_{Omega} frac{1}{2 sigma_s^2}  left| s - s^{obs}  right|^2,$$</p>
+<p>where $mathcal{C}^{d}$ is a misfit term between the flux divergence and its polynomial
+regression $d$ with respect to the ice surface elevation $s(x,y)$ to enforce smoothness with  dependence to $s$:
+$$ mathcal{C}^{d} = int_{Omega} frac{1}{2 sigma_d^2} left| nabla cdot (h {bar{bf u}}) - d  right|^2, $$</p>
+<p>where $mathcal{R}^h$ is a regularization term to enforce anisotropic smoothness and convexity of $h$:
+$$ mathcal{R}^h = alpha_h int_{h&gt;0} left(  | nabla h cdot tilde{{bf u}}^{s,obs} <a href="#id3"><span class="problematic" id="id4">|</span></a>^2 + beta  | nabla h cdot (tilde{{bf u}}^{s,obs})^{perp} <a href="#id5"><span class="problematic" id="id6">|</span></a>^2   -  gamma h  right),  $$</p>
+<p>where $mathcal{R}^{tilde{A}}$ is a regularization term to enforce smooth A:
+$$ mathcal{R}^{tilde{A}} = alpha_{tilde{A}} int_{Omega} | nabla  tilde{A}  <a href="#id7"><span class="problematic" id="id8">|</span></a>^2, $$</p>
+<p>where $mathcal{P}^h$ is a penalty term to enforce nonnegative ice thickness, and zero thickness outside a given mask:
+$$ mathcal{P}^h  = 10^{10} times left( int_{h&lt;0} h^2 + int_{mathcal{M}^{rm ice-free}} h^2 right).$$</p>
+<p>Check at the reference paper given below for more explanation on the regularization terms.</p>
+</section>
+<section id="define-controls-and-cost-components">
+<h1>Define controls and cost components<a class="headerlink" href="#define-controls-and-cost-components" title="Permalink to this heading"></a></h1>
+<p>The above optimization problem is given in the most general case, however, you may select only some components according to your data as follows:</p>
+<ul class="simple">
+<li><p>the list of control variables you wish to optimize, e.g.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_control</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;thk&#39;</span><span class="p">,</span><span class="s1">&#39;strflowctrl&#39;</span><span class="p">,</span><span class="s1">&#39;usurf&#39;</span><span class="p">]</span> <span class="c1"># this is the most general case</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_control</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;thk&#39;</span><span class="p">,</span><span class="s1">&#39;usurf&#39;</span><span class="p">]</span> <span class="c1"># this will only optimize ice thickness and top surface elevation</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_control</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;thk&#39;</span><span class="p">]</span> <span class="c1"># this will only optimize ice thickness</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>the list of cost components you wish to minimize, e.g.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_cost</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;velsurf&#39;</span><span class="p">,</span><span class="s1">&#39;thk&#39;</span><span class="p">,</span><span class="s1">&#39;usurf&#39;</span><span class="p">,</span><span class="s1">&#39;divfluxfcz&#39;</span><span class="p">,</span><span class="s1">&#39;icemask&#39;</span><span class="p">]</span>  <span class="c1"># this is the most general case</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_cost</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;velsurf&#39;</span><span class="p">,</span><span class="s1">&#39;icemask&#39;</span><span class="p">]</span>  <span class="c1"># In this case, you only fit surface velocity and ice mask.</span>
+</pre></div>
+</div>
+<p><em>Make sure you have a balance between controls and constraints to ensure the problem to have a unique solution.</em></p>
+</section>
+<section id="exploring-parameters">
+<h1>Exploring parameters<a class="headerlink" href="#exploring-parameters" title="Permalink to this heading"></a></h1>
+<p>There are parameters that may need to tune for each application.</p>
+<p>First, you may change your expected confidence levels (i.e. tolerance to fit the data) $sigma^u, sigma^h, sigma^s, sigma^d$ to fit surface ice velocity, ice thickness, surface top elevation, or divergence of the flux as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_velsurfobs_std</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># unit m/y</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_thkobs_std</span>     <span class="o">=</span> <span class="mi">5</span> <span class="c1"># unit m</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_usurfobs_std</span>   <span class="o">=</span> <span class="mi">5</span> <span class="c1"># unit m</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_divfluxobs_std</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># unit m/y</span>
+</pre></div>
+</div>
+<p>Second, you may change regularization parameters such as i) $alpha^h, alpha^A$, which control the regularization weights for the ice thickness and strflowctrl (increasing $alpha^h, alpha^A$ will make thse fields spatially smoother), or ii) parameters beta and gamma involved for regularizing the ice thickness h. Taking beta=1 occurs to enforce isotropic smoothing, reducing beta will make the smoothing more and more anisotropic to enforce further smoothing along ice flow directions than accross directions (as expected for the topography of a glacier bedrock, which was eroded over long times). Setting parameter gamma to a small value may be usefull to add a bit of convexity in the system. This may help when initializing the inverse modelled with zero thickness, or to treat margin regions with no data available. These parameters may be changed as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_regu_param_thk</span> <span class="o">=</span> <span class="mf">10.0</span>            <span class="c1"># weight for the regul. of thk</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_regu_param_strflowctrl</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># weight for the regul. of strflowctrl</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_smooth_anisotropy_factor</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_convexity_weight</span> <span class="o">=</span> <span class="mf">0.002</span>
+</pre></div>
+</div>
+<p>Lastly, there are a couple of other parameters we may be interest to change e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_nbitmax</span>       <span class="o">=</span> <span class="mi">1000</span>   <span class="c1"># Number of it. for the optimization</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_step_size</span>     <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># step size in the optimization iterative algorithm</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_init_zero_thk</span> <span class="o">=</span> <span class="kc">True</span>   <span class="c1"># Force inializing with zero ice thickness (otherwise take thkinit)</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">observation_file</span>   <span class="o">=</span> <span class="s1">&#39;observation.nc&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="running-the-optimization">
+<h1>Running the optimization<a class="headerlink" href="#running-the-optimization" title="Permalink to this heading"></a></h1>
+<p>The optimization scheme is implemented in igm function optimize(), calling it for inverse modelling would look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="kn">from</span> <span class="nn">igm</span> <span class="kn">import</span> <span class="n">Igm</span>
+
+<span class="n">glacier</span> <span class="o">=</span> <span class="n">Igm</span><span class="p">()</span>
+
+<span class="c1"># change parameters</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">iceflow_model_lib_path</span><span class="o">=</span><span class="s1">&#39;../../model-lib/f14_pismbp_GJ_21_a&#39;</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_control</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;thk&#39;</span><span class="p">,</span><span class="s1">&#39;strflowctrl&#39;</span><span class="p">,</span><span class="s1">&#39;usurf&#39;</span><span class="p">]</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_cost</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;velsurf&#39;</span><span class="p">,</span><span class="s1">&#39;thk&#39;</span><span class="p">,</span><span class="s1">&#39;usurf&#39;</span><span class="p">,</span><span class="s1">&#39;divfluxfcz&#39;</span><span class="p">,</span><span class="s1">&#39;icemask&#39;</span><span class="p">]</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">opti_usurfobs_std</span>             <span class="o">=</span> <span class="mf">5.0</span>   <span class="c1"># Tol to fit top ice surface</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">plot_result</span>           <span class="o">=</span> <span class="kc">True</span>
+<span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">plot_live</span>             <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">glacier</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">device_name</span><span class="p">):</span>
+    <span class="n">glacier</span><span class="o">.</span><span class="n">load_ncdf_data</span><span class="p">(</span><span class="n">glacier</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">observation_file</span><span class="p">)</span>
+    <span class="n">glacier</span><span class="o">.</span><span class="n">initialize_fields</span><span class="p">()</span>
+    <span class="n">glacier</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+
+<span class="n">glacier</span><span class="o">.</span><span class="n">print_all_comp_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="monitoring-the-optimization">
+<h1>Monitoring the optimization<a class="headerlink" href="#monitoring-the-optimization" title="Permalink to this heading"></a></h1>
+<p>You may monitor the data assimilation during the inverse modelling in several ways:</p>
+<ul class="simple">
+<li><p>Check that the components of the costs decrease over time, the value of cost are printed during the optimization, and a graph is produced at the end.</p></li>
+<li><p>Set up glacier.config.plot_result = True and glacier.config.plot_live = True to monitor in live time the evolution of the field your are optimizing such as the ice thickness, the surface ice speeds, ect … You may also check (hopefully decreasing) STD given in the figure.</p></li>
+<li><p>You may do the same monitoring after the run looking at optimize.nc</p></li>
+<li><p>If you asked divfluxfcz to be in glacier.config.opti_cost, you should check what look like the divergence of the fluc (divflux)</p></li>
+</ul>
+</section>
+<section id="reference">
+<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@article</span><span class="p">{</span><span class="n">IGM</span><span class="o">-</span><span class="n">inv</span><span class="p">,</span>
+  <span class="n">author</span>       <span class="o">=</span> <span class="s2">&quot;Jouvet, G.&quot;</span><span class="p">,</span>
+  <span class="n">title</span>        <span class="o">=</span> <span class="s2">&quot;Inversion of a Stokes ice flow model emulated by deep learning&quot;</span><span class="p">,</span>
+  <span class="n">DOI</span>          <span class="o">=</span> <span class="s2">&quot;10.1017/jog.2022.41&quot;</span><span class="p">,</span>
+  <span class="n">journal</span>      <span class="o">=</span> <span class="s2">&quot;Journal of Glaciology&quot;</span><span class="p">,</span>
+  <span class="n">year</span>         <span class="o">=</span> <span class="s2">&quot;2022&quot;</span><span class="p">,</span>
+  <span class="n">pages</span>        <span class="o">=</span> <span class="s2">&quot;1--14&quot;</span><span class="p">,</span>
+  <span class="n">publisher</span>    <span class="o">=</span> <span class="s2">&quot;Cambridge University Press&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="igm.html">igm package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-right" title="src" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Guillaume Jouvet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
