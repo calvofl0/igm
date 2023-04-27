@@ -42,7 +42,78 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">API Documentation</a></li>
+<li><a class="reference internal" href="#">API Documentation</a><ul>
+<li><a class="reference internal" href="#igm.igm.Igm"><code class="docutils literal notranslate"><span class="pre">Igm</span></code></a><ul>
+<li><a class="reference internal" href="#igm.igm.Igm.animate_result"><code class="docutils literal notranslate"><span class="pre">Igm.animate_result()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.compute_divflux"><code class="docutils literal notranslate"><span class="pre">Igm.compute_divflux()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.compute_flow_direction_for_anisotropic_smoothing"><code class="docutils literal notranslate"><span class="pre">Igm.compute_flow_direction_for_anisotropic_smoothing()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.compute_gradient_tf"><code class="docutils literal notranslate"><span class="pre">Igm.compute_gradient_tf()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.compute_rms_std_optimization"><code class="docutils literal notranslate"><span class="pre">Igm.compute_rms_std_optimization()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.getmag"><code class="docutils literal notranslate"><span class="pre">Igm.getmag()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.init_3dvel"><code class="docutils literal notranslate"><span class="pre">Igm.init_3dvel()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.init_smb_nn"><code class="docutils literal notranslate"><span class="pre">Igm.init_smb_nn()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.init_smb_simple"><code class="docutils literal notranslate"><span class="pre">Igm.init_smb_simple()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.initialize"><code class="docutils literal notranslate"><span class="pre">Igm.initialize()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.initialize_fields"><code class="docutils literal notranslate"><span class="pre">Igm.initialize_fields()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.initialize_iceflow"><code class="docutils literal notranslate"><span class="pre">Igm.initialize_iceflow()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.load_ncdf_data"><code class="docutils literal notranslate"><span class="pre">Igm.load_ncdf_data()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.load_thk_profiles"><code class="docutils literal notranslate"><span class="pre">Igm.load_thk_profiles()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.load_tif_data"><code class="docutils literal notranslate"><span class="pre">Igm.load_tif_data()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.make_data_holes"><code class="docutils literal notranslate"><span class="pre">Igm.make_data_holes()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.optimize"><code class="docutils literal notranslate"><span class="pre">Igm.optimize()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.output_ncdf_optimize_final"><code class="docutils literal notranslate"><span class="pre">Igm.output_ncdf_optimize_final()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.plot_computational_pie"><code class="docutils literal notranslate"><span class="pre">Igm.plot_computational_pie()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.plot_cost_functions"><code class="docutils literal notranslate"><span class="pre">Igm.plot_cost_functions()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.plot_opti_diff"><code class="docutils literal notranslate"><span class="pre">Igm.plot_opti_diff()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.print_all_comp_info"><code class="docutils literal notranslate"><span class="pre">Igm.print_all_comp_info()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.print_comp_info_live"><code class="docutils literal notranslate"><span class="pre">Igm.print_comp_info_live()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.print_info"><code class="docutils literal notranslate"><span class="pre">Igm.print_info()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_3dvel"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_3dvel()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_climate"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_climate()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_erosion"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_erosion()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_iceflow"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_iceflow()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_optimize"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_optimize()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_output_ncdf"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_output_ncdf()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_plot"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_plot()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_smb"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_smb()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_smoothing_thk"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_smoothing_thk()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_t_dt"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_t_dt()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_config_param_tracking"><code class="docutils literal notranslate"><span class="pre">Igm.read_config_param_tracking()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.read_fields_and_bounds"><code class="docutils literal notranslate"><span class="pre">Igm.read_fields_and_bounds()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.restart"><code class="docutils literal notranslate"><span class="pre">Igm.restart()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.run"><code class="docutils literal notranslate"><span class="pre">Igm.run()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.run_opti"><code class="docutils literal notranslate"><span class="pre">Igm.run_opti()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.seeding_particles"><code class="docutils literal notranslate"><span class="pre">Igm.seeding_particles()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.stop"><code class="docutils literal notranslate"><span class="pre">Igm.stop()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_3dvel"><code class="docutils literal notranslate"><span class="pre">Igm.update_3dvel()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_climate"><code class="docutils literal notranslate"><span class="pre">Igm.update_climate()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_iceflow"><code class="docutils literal notranslate"><span class="pre">Igm.update_iceflow()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_ncdf_3d_ex"><code class="docutils literal notranslate"><span class="pre">Igm.update_ncdf_3d_ex()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_ncdf_ex"><code class="docutils literal notranslate"><span class="pre">Igm.update_ncdf_ex()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_ncdf_optimize"><code class="docutils literal notranslate"><span class="pre">Igm.update_ncdf_optimize()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_ncdf_ts"><code class="docutils literal notranslate"><span class="pre">Igm.update_ncdf_ts()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_particles"><code class="docutils literal notranslate"><span class="pre">Igm.update_particles()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_plot"><code class="docutils literal notranslate"><span class="pre">Igm.update_plot()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_plot_inversion"><code class="docutils literal notranslate"><span class="pre">Igm.update_plot_inversion()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_plot_profiles"><code class="docutils literal notranslate"><span class="pre">Igm.update_plot_profiles()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_reconstruct_3dvel_tf"><code class="docutils literal notranslate"><span class="pre">Igm.update_reconstruct_3dvel_tf()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_smb"><code class="docutils literal notranslate"><span class="pre">Igm.update_smb()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_smb_nn"><code class="docutils literal notranslate"><span class="pre">Igm.update_smb_nn()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_smb_simple"><code class="docutils literal notranslate"><span class="pre">Igm.update_smb_simple()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_smoothing_thk"><code class="docutils literal notranslate"><span class="pre">Igm.update_smoothing_thk()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_t_dt"><code class="docutils literal notranslate"><span class="pre">Igm.update_t_dt()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_thk"><code class="docutils literal notranslate"><span class="pre">Igm.update_thk()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_tif_ex"><code class="docutils literal notranslate"><span class="pre">Igm.update_tif_ex()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_topg"><code class="docutils literal notranslate"><span class="pre">Igm.update_topg()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_vert_disc_tf"><code class="docutils literal notranslate"><span class="pre">Igm.update_vert_disc_tf()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.update_write_trajectories"><code class="docutils literal notranslate"><span class="pre">Igm.update_write_trajectories()</span></code></a></li>
+<li><a class="reference internal" href="#igm.igm.Igm.whatsize"><code class="docutils literal notranslate"><span class="pre">Igm.whatsize()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#igm.igm.str2bool"><code class="docutils literal notranslate"><span class="pre">str2bool()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
         </div>
@@ -69,8 +140,433 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="api-documentation">
-<span id="igm"></span><h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this heading"></a></h1>
+  <section id="module-igm.igm">
+<span id="api-documentation"></span><span id="igm"></span><h1>API Documentation<a class="headerlink" href="#module-igm.igm" title="Permalink to this heading"></a></h1>
+<p>Copyright (C) 2021-2022 Guillaume Jouvet &lt;<a class="reference external" href="mailto:guillaume&#46;jouvet&#37;&#52;&#48;geo&#46;uzh&#46;ch">guillaume<span>&#46;</span>jouvet<span>&#64;</span>geo<span>&#46;</span>uzh<span>&#46;</span>ch</a>&gt;
+Published under the GNU GPL (Version 3), check at the LICENSE file</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="igm.igm.Igm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">igm.igm.</span></span><span class="sig-name descname"><span class="pre">Igm</span></span><a class="headerlink" href="#igm.igm.Igm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.animate_result">
+<span class="sig-name descname"><span class="pre">animate_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vari</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.animate_result" title="Permalink to this definition"></a></dt>
+<dd><p>This function can be called at the end of an IGM run, it permits
+to create an video animation in mp4 by readin the ex.nc ncdf file,
+for a given variable ‘vari’</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.compute_divflux">
+<span class="sig-name descname"><span class="pre">compute_divflux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.compute_divflux" title="Permalink to this definition"></a></dt>
+<dd><p>#   upwind computation of the divergence of the flux : d(u h)/dx + d(v h)/dy
+#   First, u and v are computed on the staggered grid (i.e. cell edges)
+#   Second, one extend h horizontally by a cell layer on any bords (assuming same value)
+#   Third, one compute the flux on the staggered grid slecting upwind quantities
+#   Last, computing the divergence on the staggered grid yields values def on the original grid</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.compute_flow_direction_for_anisotropic_smoothing">
+<span class="sig-name descname"><span class="pre">compute_flow_direction_for_anisotropic_smoothing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.compute_flow_direction_for_anisotropic_smoothing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.compute_gradient_tf">
+<span class="sig-name descname"><span class="pre">compute_gradient_tf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.compute_gradient_tf" title="Permalink to this definition"></a></dt>
+<dd><p>compute spatial 2D gradient of a given field</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.compute_rms_std_optimization">
+<span class="sig-name descname"><span class="pre">compute_rms_std_optimization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.compute_rms_std_optimization" title="Permalink to this definition"></a></dt>
+<dd><p>compute_std_optimization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.getmag">
+<span class="sig-name descname"><span class="pre">getmag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.getmag" title="Permalink to this definition"></a></dt>
+<dd><p>return the norm of a 2D vector, e.g. to compute velbase_mag</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.init_3dvel">
+<span class="sig-name descname"><span class="pre">init_3dvel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.init_3dvel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.init_smb_nn">
+<span class="sig-name descname"><span class="pre">init_smb_nn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.init_smb_nn" title="Permalink to this definition"></a></dt>
+<dd><p>initialize smb Neural Network</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.init_smb_simple">
+<span class="sig-name descname"><span class="pre">init_smb_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.init_smb_simple" title="Permalink to this definition"></a></dt>
+<dd><p>Read parameters of simple mass balance from an ascii file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.initialize" title="Permalink to this definition"></a></dt>
+<dd><p>function initialize the strict minimum for IGM class, and print parameters</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.initialize_fields">
+<span class="sig-name descname"><span class="pre">initialize_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.initialize_fields" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize fields, complete the loading of geology</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.initialize_iceflow">
+<span class="sig-name descname"><span class="pre">initialize_iceflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.initialize_iceflow" title="Permalink to this definition"></a></dt>
+<dd><p>set-up the iceflow emulator</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.load_ncdf_data">
+<span class="sig-name descname"><span class="pre">load_ncdf_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.load_ncdf_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load the input files from netcdf file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.load_thk_profiles">
+<span class="sig-name descname"><span class="pre">load_thk_profiles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.load_thk_profiles" title="Permalink to this definition"></a></dt>
+<dd><p>load glacier ice thickness mesured profiles</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.load_tif_data">
+<span class="sig-name descname"><span class="pre">load_tif_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.load_tif_data" title="Permalink to this definition"></a></dt>
+<dd><p>Load the input files from tiff file (alternative to load_ncdf_data)
+Select available fields in variables
+you need at least topg or usurf, and thk,
+filed e.g. topg.tif, thk.tif must be present in the working forlder
+you need rasterio to play this function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.make_data_holes">
+<span class="sig-name descname"><span class="pre">make_data_holes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.make_data_holes" title="Permalink to this definition"></a></dt>
+<dd><p>This serves to make holes in surface data (velocities) to test robusness of the optimization</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.optimize">
+<span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.optimize" title="Permalink to this definition"></a></dt>
+<dd><p>This function does the data assimilation (inverse modelling) to optimize thk, strflowctrl ans usurf from data
+Check at this [page](<a class="reference external" href="https://github.com/jouvetg/igm/blob/main/doc/Inverse-modeling.md">https://github.com/jouvetg/igm/blob/main/doc/Inverse-modeling.md</a>)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.output_ncdf_optimize_final">
+<span class="sig-name descname"><span class="pre">output_ncdf_optimize_final</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.output_ncdf_optimize_final" title="Permalink to this definition"></a></dt>
+<dd><p>Write final geology after optimizing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.plot_computational_pie">
+<span class="sig-name descname"><span class="pre">plot_computational_pie</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.plot_computational_pie" title="Permalink to this definition"></a></dt>
+<dd><p>Plot to the computational time of each model components in a pie</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.plot_cost_functions">
+<span class="sig-name descname"><span class="pre">plot_cost_functions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">costs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_live</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.plot_cost_functions" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.plot_opti_diff">
+<span class="sig-name descname"><span class="pre">plot_opti_diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vari</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_live</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.plot_opti_diff" title="Permalink to this definition"></a></dt>
+<dd><p>Plot thickness, velocity, mand slidingco</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.print_all_comp_info">
+<span class="sig-name descname"><span class="pre">print_all_comp_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.print_all_comp_info" title="Permalink to this definition"></a></dt>
+<dd><p>This serves to print computational info report</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.print_comp_info_live">
+<span class="sig-name descname"><span class="pre">print_comp_info_live</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.print_comp_info_live" title="Permalink to this definition"></a></dt>
+<dd><p>This serves to print computational info on the fly during computation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.print_info">
+<span class="sig-name descname"><span class="pre">print_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.print_info" title="Permalink to this definition"></a></dt>
+<dd><p>This serves to print key info on the fly during computation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param">
+<span class="sig-name descname"><span class="pre">read_config_param</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param" title="Permalink to this definition"></a></dt>
+<dd><p>LIst of the main IGM parameters (some others are defined in other functions)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_3dvel">
+<span class="sig-name descname"><span class="pre">read_config_param_3dvel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_3dvel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_climate">
+<span class="sig-name descname"><span class="pre">read_config_param_climate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_climate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_erosion">
+<span class="sig-name descname"><span class="pre">read_config_param_erosion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_erosion" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_iceflow">
+<span class="sig-name descname"><span class="pre">read_config_param_iceflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_iceflow" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_optimize">
+<span class="sig-name descname"><span class="pre">read_config_param_optimize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_optimize" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_output_ncdf">
+<span class="sig-name descname"><span class="pre">read_config_param_output_ncdf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_output_ncdf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_plot">
+<span class="sig-name descname"><span class="pre">read_config_param_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_plot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_smb">
+<span class="sig-name descname"><span class="pre">read_config_param_smb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_smb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_smoothing_thk">
+<span class="sig-name descname"><span class="pre">read_config_param_smoothing_thk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_smoothing_thk" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_t_dt">
+<span class="sig-name descname"><span class="pre">read_config_param_t_dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_t_dt" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_config_param_tracking">
+<span class="sig-name descname"><span class="pre">read_config_param_tracking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_config_param_tracking" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.read_fields_and_bounds">
+<span class="sig-name descname"><span class="pre">read_fields_and_bounds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.read_fields_and_bounds" title="Permalink to this definition"></a></dt>
+<dd><p>get fields (input and outputs) from given file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.restart">
+<span class="sig-name descname"><span class="pre">restart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.restart" title="Permalink to this definition"></a></dt>
+<dd><p>Permit to restart a simulation from a ncdf file y taking the last iterate</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.run" title="Permalink to this definition"></a></dt>
+<dd><p>This function wraps the full time-iterative scheme for an IGM forward run
+with an optional inverse step.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.run_opti">
+<span class="sig-name descname"><span class="pre">run_opti</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.run_opti" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.seeding_particles">
+<span class="sig-name descname"><span class="pre">seeding_particles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.seeding_particles" title="Permalink to this definition"></a></dt>
+<dd><p>here we define (xpos,ypos) the horiz coordinate of tracked particles
+and rhpos is the relative position in the ice column (scaled bwt 0 and 1)</p>
+<p>here we seed only the accum. area (a bit more), where there is
+significant ice, and in some points of a regular grid self.gridseed
+(density defined by density_seeding)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.stop" title="Permalink to this definition"></a></dt>
+<dd><p>this is a dummy stop that serves to syncrohnize CPU and GPU for reliable computational times</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_3dvel">
+<span class="sig-name descname"><span class="pre">update_3dvel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_3dvel" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_climate">
+<span class="sig-name descname"><span class="pre">update_climate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_climate" title="Permalink to this definition"></a></dt>
+<dd><p>This function serves to define a climate forcing (e.g. monthly temperature and precipitation fields) to be used for the surface mass balance model (e.g. accumulation/melt PDD-like model). No climate forcing is provided with IGM is this is case-dependent. Check at the aletsch-1880-21000 example.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_iceflow">
+<span class="sig-name descname"><span class="pre">update_iceflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_iceflow" title="Permalink to this definition"></a></dt>
+<dd><p>Ice flow dynamics are modeled using Artificial Neural Networks trained from physical models.</p>
+<p>You may find trained and ready-to-use ice flow emulators in the folder <cite>model-lib/T_M_I_Y_V/R/</cite>, where ‘T_M_I_Y_V’ defines the emulator, and R defines the spatial resolution. Make sure that the resolution of the picked emulator is available in the database. Results produced with IGM will strongly rely on the chosen emulator. Make sure that you use the emulator within the hull of its training dataset (e.g., do not model an ice sheet with an emulator trained with mountain glaciers) to ensure reliability (or fidelity w.r.t to the instructor model) – the emulator is probably much better at interpolating than at extrapolating. Information on the training dataset is provided in a dedicated README coming along with the emulator.</p>
+<p>At the time of writing, I recommend using <em>f15_cfsflow_GJ_22_a</em>, which takes ice thickness, top surface slopes, the sliding coefficient c (‘slidingco’), and Arrhenuis factor A (‘arrhenius’), and return basal, vertical-average and surface x- and y- velocity components as depicted on the following graph:</p>
+<p>![](<a class="reference external" href="https://github.com/jouvetg/igm/blob/main/fig/mapping-f15.png">https://github.com/jouvetg/igm/blob/main/fig/mapping-f15.png</a>)</p>
+<p>I have trained <em>f15_cfsflow_GJ_22_a</em> using a large dataset of modeled glaciers (based on a Stokes-based CfsFlow ice flow solver) and varying sliding coefficient c, and Arrhenius factor A into a 2D space.</p>
+<p>For now, only the emulator trained by CfsFlow and PISM is available with different resolutions. Consider training your own with the [Deep Learning Emulator](<a class="reference external" href="https://github.com/jouvetg/dle">https://github.com/jouvetg/dle</a>) if none of these emulators fill your need.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_ncdf_3d_ex">
+<span class="sig-name descname"><span class="pre">update_ncdf_3d_ex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_ncdf_3d_ex" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize  and write the ncdf output file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_ncdf_ex">
+<span class="sig-name descname"><span class="pre">update_ncdf_ex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_ncdf_ex" title="Permalink to this definition"></a></dt>
+<dd><p>This function write 2D field variables defined in the list config.vars_to_save into the ncdf output file ex.nc</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_ncdf_optimize">
+<span class="sig-name descname"><span class="pre">update_ncdf_optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_ncdf_optimize" title="Permalink to this definition"></a></dt>
+<dd><p>Initialize and write the ncdf optimze file</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_ncdf_ts">
+<span class="sig-name descname"><span class="pre">update_ncdf_ts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_ncdf_ts" title="Permalink to this definition"></a></dt>
+<dd><p>This function write time serie variables (ice glaziated area and volume) into the ncdf output file ts.nc</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_particles">
+<span class="sig-name descname"><span class="pre">update_particles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_particles" title="Permalink to this definition"></a></dt>
+<dd><p>IGM includes a particle tracking routine, which can compute a large number of trajectories (as it is implemented with TensorFlow to run in parallel) in live time during the forward model run. The routine produces some seeding of particles (by default in the accumulation area at regular intervals), and computes the time trajectory of the resulting particle in time advected by the velocity field in 3D. There are currently 2 implementations:</p>
+<ul class="simple">
+<li><p>‘simple’, Horizontal and vertical directions are treated differently: i) In the horizontal plan, particles are advected with the horizontal velocity field (interpolated bi-linearly). The positions are recorded in vector (glacier.xpos,glacier.ypos). ii) In the vertical direction, particles are tracked along the ice column scaled between 0 and 1 (0 at the bed, 1 at the top surface). The relative position along the ice column is recorded in vector glacier.rhpos (same dimension as glacier.xpos and iglaciergm.ypos). Particles are always initialized at 1 (assumed to be on the surface). The evolution of the particle within the ice column through time is computed according to the surface mass balance: the particle deepens when the surface mass balance is positive (then igm.rhpos decreases), and re-emerge when the surface mass balance is negative.</p></li>
+<li><p>‘3d’, The vertical velocity is reconsructed by integrating the divergence of the horizontal velocity, this permits in turn to perform 3D particle tracking. self.zpos is the z- position within the ice.</p></li>
+</ul>
+<p>Note that in both case, the velocity in the ice layer is reconstructed from bottom and surface one assuming 4rth order polynomial profile (SIA-like)</p>
+<p>To include this feature, make sure:</p>
+<ul class="simple">
+<li><p>To adapt the seeding to your need. You may keep the default seeding in the accumulation area setting the seeding frequency with igm.config.frequency_seeding and the seeding density glacier.config.density_seeding. Alternatively, you may define your own seeding strategy (e.g. seeding close to rock walls/nunataks). To do so, you may redefine the function seeding_particles.</p></li>
+<li><p>At each time step, the weight of surface debris contains in each cell the 2D horizontal grid is computed, and stored in variable igm.weight_particles.</p></li>
+<li><p>You may visualize the moving particles in update_plot().</p></li>
+<li><p>Particles trajectories are saved in folder ‘trajectory’, and are organized by seeding times.</p></li>
+</ul>
+<p>Check at the example aletsch-1880-2100 for an example of particle tracking.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_plot">
+<span class="sig-name descname"><span class="pre">update_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_plot" title="Permalink to this definition"></a></dt>
+<dd><p>Plot some variables (e.g. thickness, velocity, mass balance) over time</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_plot_inversion">
+<span class="sig-name descname"><span class="pre">update_plot_inversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_live</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_plot_inversion" title="Permalink to this definition"></a></dt>
+<dd><p>Plot thickness, velocity, mand slidingco</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_plot_profiles">
+<span class="sig-name descname"><span class="pre">update_plot_profiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_live</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_plot_profiles" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_reconstruct_3dvel_tf">
+<span class="sig-name descname"><span class="pre">update_reconstruct_3dvel_tf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_reconstruct_3dvel_tf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_smb">
+<span class="sig-name descname"><span class="pre">update_smb</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_smb" title="Permalink to this definition"></a></dt>
+<dd><p>This function permits to choose between several surface mass balance models:</p>
+<ul class="simple">
+<li><p>A very simple mass balance model based on a few parameters (ELA, …), whose parameters are defined in file glacier.config.mb_simple_file. This surface mass balance is provided with IGM.</p></li>
+<li><p>Users can build their own mass balance routine, and possibly combine them with a climate routine. E.g. in the aletsch-1880-21000 example, both climate and surface mass balance models were customized to implement i) the computation of daily temperature and precipitation 2D fields ii) an accumulation/melt model (PDD-like) that takes the climate input, and transforms them into effective surface mass balance.</p></li>
+<li><p>Surface Mass balance can be given in the form of a neural network, which predicts surface mass balance from temperature and precipitation fields. As an illustration, I have trained a Neural Network from climate and mass balance data from glaciers in the Alps using the [Deep Learning Emulator](<a class="reference external" href="https://github.com/jouvetg/dle">https://github.com/jouvetg/dle</a>). To try it, check the example aletsch-1880-2100. Note that this is highly experimental considering that so far i) the training dataset is small ii) no assessment was done.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_smb_nn">
+<span class="sig-name descname"><span class="pre">update_smb_nn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_smb_nn" title="Permalink to this definition"></a></dt>
+<dd><p>function update the smb using the neural network</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_smb_simple">
+<span class="sig-name descname"><span class="pre">update_smb_simple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_smb_simple" title="Permalink to this definition"></a></dt>
+<dd><p>Implement Mass balance ‘simple’ parametrized by ELA, ablation and accumulation gradients, and max acuumulation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_smoothing_thk">
+<span class="sig-name descname"><span class="pre">update_smoothing_thk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_smoothing_thk" title="Permalink to this definition"></a></dt>
+<dd><p>This function permits to smooth the ice thickness at some intervals</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_t_dt">
+<span class="sig-name descname"><span class="pre">update_t_dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_t_dt" title="Permalink to this definition"></a></dt>
+<dd><p>Function update_t_dt() return time step dt (computed to satisfy the CFL condition), updated time t, and a boolean telling whether results must be saved or not. For stability reasons of the transport scheme for the ice thickness evolution, the time step must respect a CFL condition, controlled by parameter glacier.config.cfl, which is the maximum number of cells crossed in one iteration (this parameter cannot exceed one).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_thk">
+<span class="sig-name descname"><span class="pre">update_thk</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_thk" title="Permalink to this definition"></a></dt>
+<dd><p>This function solves the mass conservation of ice to update the thickness from ice flow and surface mass balance. The mass conservation equation is solved using an explicit first-order upwind finite-volume scheme on a regular 2D grid with constant cell spacing in any direction. The discretization and the approximation of the flux divergence is described [here](<a class="reference external" href="https://github.com/jouvetg/igm/blob/main/fig/transp-igm.jpg">https://github.com/jouvetg/igm/blob/main/fig/transp-igm.jpg</a>). With this scheme mass of ice is allowed to move from cell to cell (where thickness and velocities are defined) from edge-defined fluxes (inferred from depth-averaged velocities, and ice thickness in upwind direction). The resulting scheme is mass conservative and parallelizable (because fully explicit). However, it is subject to a CFL condition. This means that the time step (defined in glacier.update_t_dt()) is controlled by parameter glacier.config.cfl, which is the maximum number of cells crossed in one iteration (this parameter cannot exceed one).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_tif_ex">
+<span class="sig-name descname"><span class="pre">update_tif_ex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_tif_ex" title="Permalink to this definition"></a></dt>
+<dd><p>Save variables in tiff file (alternative to update_ncdf_ex)
+Select available fields in variables, e.g. topg, usurf, …
+Files will be created with names like thk-000040.tif in the workin direc.
+you need rasterio to play this function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_topg">
+<span class="sig-name descname"><span class="pre">update_topg</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_topg" title="Permalink to this definition"></a></dt>
+<dd><p>This function implements change in basal topography (glacial erosion or uplift). Setting glacier.config.erosion_include=True, the bedrock is updated (each glacier.config.erosion_update_freq years) assuming the erosion rate to be proportional (parameter glacier.config.erosion_cst) to a power (parameter glacier.config.erosion_exp) of the sliding velocity magnitude. By default, we use the parameters from Herman, F. et al. Erosion by an Alpine glacier. Science 350, 193–195 (2015). Check at the function glacier.update_topg() for more details on the implementation of glacial erosion in IGM. Setting glacier.config.uplift_include=True will allow to include an uplift defined by glacier.config.uplift_rate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_vert_disc_tf">
+<span class="sig-name descname"><span class="pre">update_vert_disc_tf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_vert_disc_tf" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.update_write_trajectories">
+<span class="sig-name descname"><span class="pre">update_write_trajectories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.update_write_trajectories" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="igm.igm.Igm.whatsize">
+<span class="sig-name descname"><span class="pre">whatsize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.Igm.whatsize" title="Permalink to this definition"></a></dt>
+<dd><p>this is a simple function that serves to monitor the space in Mbyte taken by a variable</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="igm.igm.str2bool">
+<span class="sig-prename descclassname"><span class="pre">igm.igm.</span></span><span class="sig-name descname"><span class="pre">str2bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igm.igm.str2bool" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 
 
