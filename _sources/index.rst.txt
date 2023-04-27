@@ -8,9 +8,6 @@ Welcome to The Instructed Glacier Model (IGM)'s documentation!
 
 .. mdinclude:: ../../doc/Inverse-modeling.md
 
-.. contents::
-   :depth: 2
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
